@@ -79,7 +79,8 @@ category = models.ForeignKey(
 verbose_name = u'Статя'
 verbose_name_plural = u'Статті'
 
+
 class Product(models.Model):
     title = models.CharField(max_length=256, blank=False, 
 verbose_name="Product Title")
-price = models.IntegerField(blank=False, default=0, verbose_name="Product Price")
+    price = models.IntegerField(blank=False, default=0, verbose_name="Product Price")
