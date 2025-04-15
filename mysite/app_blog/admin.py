@@ -1,14 +1,9 @@
-from django.contrib import admin
-
-# Register your models here.
-
 # -*- coding: utf-8 -*-
-from django.contrib import admin
+from django.contrib import admin 
 from django.shortcuts import get_object_or_404
 
 from .models import Article, ArticleImage, Category
 from .forms import ArticleImageForm
-
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category', 'slug')
@@ -21,7 +16,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-
 class ArticleImageInline(admin.TabularInline):
     model = ArticleImage
     form = ArticleImageForm
@@ -32,7 +26,6 @@ class ArticleImageInline(admin.TabularInline):
         }),
     )
 
-
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'pub_date', 'slug', 'main_page')
     inlines = [ArticleImageInline]
@@ -42,10 +35,9 @@ class ArticleAdmin(admin.ModelAdmin):
     raw_id_fields = ('category',)
     fieldsets = (
         ('', {
-            'fields': ('pub_date', 'title', 'description',
-                       'main_page'),
+            'fields': ('pub_date', 'title', 'description', 'main_page'),
         }),
-        ((u'Додатково'), {
+        ('Додатково', {
             'classes': ('grp-collapse grp-closed',),
             'fields': ('slug',),
         }),
